@@ -21,7 +21,7 @@
   nordvpn-arm64-deb,
 }: let
   pname = "nordvpn";
-  version = "4.2.0";
+  version = "5.0.0";
 
   nordVPNBase = stdenv.mkDerivation {
     inherit pname version;
@@ -75,6 +75,27 @@
       libcap_ng
     ];
   };
+
+  nordVPNfhs' = buildFHSEnvChroot {
+    name = "nordvpn";
+    runScript = "${nordVPNBase}/bin/nordvpn";
+
+    targetPkgs = pkgs: [
+      nordVPNBase
+      sysctl
+      iptables
+      iproute2
+      libxml2_13
+      procps
+      cacert
+      libidn2
+      zlib
+      wireguard-tools
+      icu72
+      libnl
+      libcap_ng
+    ];
+  };
 in
   stdenv.mkDerivation {
     inherit pname version;
@@ -86,8 +107,9 @@ in
     installPhase = ''
       runHook preInstall
       mkdir -p $out/bin $out/share
-      ln -s ${nordVPNBase}/bin/nordvpn $out/bin
+      ln -s ${nordVPNBase}/bin/nordvpn $out/bin/nordvpn-cli
       ln -s ${nordVPNfhs}/bin/nordvpnd $out/bin
+      ln -s ${nordVPNfhs'}/bin/nordvpn $out/bin
       ln -s ${nordVPNBase}/share/* $out/share/
       ln -s ${nordVPNBase}/var $out/
       runHook postInstall
