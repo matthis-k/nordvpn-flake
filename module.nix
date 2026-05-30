@@ -1,11 +1,11 @@
 {
-  self,
+  packages,
   config,
   lib,
   pkgs,
   ...
 }: let
-  nordVpnPkg = self.packages."${pkgs.system}".nordvpn;
+  nordVpnPkg = packages."${pkgs.system}".nordvpn;
 in
   with lib; {
     options.services.nordvpn = {
