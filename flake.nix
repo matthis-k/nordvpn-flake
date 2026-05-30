@@ -61,8 +61,7 @@
     // {
       nixosModules = {
         default = self.nixosModules.nordvpn;
-        nordvpn =
-          import ./module.nix {inherit (self) packages;};
+        nordvpn = ./module.nix;
       };
       overlays = {
         default = self.overlays.nordvpn;
