@@ -1,5 +1,6 @@
 {
   autoPatchelfHook,
+  buildFHSEnvChroot,
   dpkg,
   fetchurl,
   lib,
