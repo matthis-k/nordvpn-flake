@@ -1,10 +1,4 @@
-{
-  packages,
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{ packages }: { config, lib, pkgs, ... }: let
   nordVpnPkg = packages."${pkgs.system}".nordvpn;
 in
   with lib; {
