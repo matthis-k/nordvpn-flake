@@ -1,7 +1,7 @@
 {
   autoPatchelfHook,
-  buildFHSEnvChroot,
   dpkg,
+  fetchurl,
   lib,
   stdenv,
   sysctl,
@@ -17,11 +17,19 @@
   icu72,
   libnl,
   libcap_ng,
-  nordvpn-amd64-deb,
-  nordvpn-arm64-deb,
 }: let
   pname = "nordvpn";
   version = "5.0.0";
+
+  nordvpn-amd64-deb = fetchurl {
+    url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_amd64.deb";
+    hash = "sha256-F7/5WAAGaX3IJ3v/psp9cyWGs7kn2XOiCSN2Q6zeRAY=";
+  };
+
+  nordvpn-arm64-deb = fetchurl {
+    url = "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_arm64.deb";
+    hash = lib.fakeHash;
+  };
 
   nordVPNBase = stdenv.mkDerivation {
     inherit pname version;

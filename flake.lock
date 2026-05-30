@@ -89,35 +89,11 @@
         "type": "github"
       }
     },
-    "nordvpn-amd64-deb": {
-      "flake": false,
-      "locked": {
-        "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_amd64.deb"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_amd64.deb"
-      }
-    },
-    "nordvpn-arm64-deb": {
-      "flake": false,
-      "locked": {
-        "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_arm64.deb"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://repo.nordvpn.com/deb/nordvpn/debian/pool/main/n/nordvpn/nordvpn_5.0.0_arm64.deb"
-      }
-    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
         "hercules-ci-effects": "hercules-ci-effects",
-        "nixpkgs": "nixpkgs_2",
-        "nordvpn-amd64-deb": "nordvpn-amd64-deb",
-        "nordvpn-arm64-deb": "nordvpn-arm64-deb"
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {

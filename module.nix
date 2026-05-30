@@ -1,13 +1,11 @@
 {
-  nordvpn-amd64-deb,
-  nordvpn-arm64-deb,
-}: {
+  self,
   config,
   lib,
   pkgs,
   ...
 }: let
-  nordVpnPkg = pkgs.callPackage ./nordvpn.nix {inherit nordvpn-amd64-deb nordvpn-arm64-deb;};
+  nordVpnPkg = self.packages."${pkgs.system}".nordvpn;
 in
   with lib; {
     options.services.nordvpn = {
